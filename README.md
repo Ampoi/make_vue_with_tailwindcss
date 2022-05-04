@@ -1,0 +1,2 @@
+# make_vue_with_tailwindcss
+VueCLIプロジェクト(Vite)を作って自動でTailwindCSSもインストールできるコードです。
