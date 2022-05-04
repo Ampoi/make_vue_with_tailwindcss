@@ -1,6 +1,6 @@
 #!/bin/bash
 thisProjectPath=$(cd $(dirname $0); pwd)
-defaultPath=/media/skuronosuke/Linux #ここに作成するプロジェクトフォルダを保存するパスを入力
+defaultPath=/hoge #ここに作成するプロジェクトフォルダを保存するパスを入力
 
 cd $defaultPath
 read -p "AppName > " name
