@@ -1,0 +1,30 @@
+#!/bin/bash
+thisProjectPath=$(cd $(dirname $0); pwd)
+defaultPath=/media/skuronosuke/Linux #ここに作成するプロジェクトフォルダを保存するパスを入力
+
+cd $defaultPath
+read -p "AppName > " name
+expect -c "
+	set timeout 5
+	spawn npm init vite@latest
+	expect \"Project name:\"
+	send \"$name\n\"
+	expect \"Select a framework:\"
+	send \"\t\n\"
+	expect \"Select a framework:\"
+	send \"\n\"
+	interact
+"
+cd $name
+npm install
+#tailwindcss
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+cp $thisProjectPath/tailwindcss/tailwind.config.js tailwind.config.js
+cd src
+touch index.css
+cp $thisProjectPath/tailwindcss/index.css index.css
+cp $thisProjectPath/tailwindcss/main.js main.js
+#start
+code $defaultPath/$name/
+npm run dev
